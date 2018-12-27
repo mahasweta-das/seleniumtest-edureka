@@ -8,9 +8,9 @@ import testbase.TestBase;
 
 public class LoginPage extends TestBase {
 @FindBy(xpath="//input[@name='login']") WebElement username;
-@FindBy(xpath="//input[@name='login']") WebElement password;
-@FindBy(xpath="//input[value='Submit']") WebElement submit;
-@FindBy(xpath="//div[contains(text()='Login Failed!')]") WebElement textMessage;
+@FindBy(xpath="//input[@name='password']") WebElement password;
+@FindBy(xpath="//input[@value='Submit']") WebElement submit;
+@FindBy(xpath="//div[contains(text(),'Login Failed!')]") WebElement textMessage;
 
 //Initialize all elements of Login Page based on xpath
 public LoginPage(){ 
