@@ -15,7 +15,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -25,9 +27,10 @@ import testbase.TestBase;
 
 public class LoginPageTest extends TestBase{
  LoginPage loginpage;
-	@BeforeMethod
+	@BeforeClass
 	public void setup(){
 		init();
+		loginpage=new LoginPage();
 	}
 	@Test(priority=1)
 	public void verifyPageTitle(){
@@ -37,7 +40,7 @@ public class LoginPageTest extends TestBase{
 	public void verifySubmit(){
 		st.assertTrue(loginpage.login(prop.getProperty("userid"), prop.getProperty("password")));
 	}
-	@AfterMethod
+	@AfterClass
 	public void tearDown(){
 		destroy();
 	}
