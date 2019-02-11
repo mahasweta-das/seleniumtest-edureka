@@ -59,7 +59,7 @@ public class TestBase {
 		driver.get(url);			
 	}	
 	public void destroy(){
-	//	driver.quit();
+		driver.quit();
 	}
 	
 }
