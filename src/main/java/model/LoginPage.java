@@ -18,7 +18,8 @@ public LoginPage(){
 }
 //Verify Login Page Title
 public String validateLoginPageTitle(){
-	return driver.getTitle();
+	String title=driver.getTitle();
+	return title;
 }
 //Login
 public boolean login(String uname,String passwrd){			
@@ -30,6 +31,7 @@ public boolean login(String uname,String passwrd){
 	submit.submit();
 	
 	//Verify login is successful > As edureka password is not working edureka/edureka
-	return textMessage.isDisplayed();		
+	String text=textMessage.isDisplayed();		
+	return text;
 }	
 }
