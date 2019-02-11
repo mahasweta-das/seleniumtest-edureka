@@ -27,11 +27,11 @@ public class TestBase {
 	
 	//setup log4j, set browser, setup EventFiringWebDriver and WebDriverEventListener, maximize window, deleteAllCookies, Pageload timeout, Implicit Timeout 
 	public void init(){
-		System.out.println("Initializing::::");
 		st=new SoftAssert();
 		timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		prop=new Properties();
 		currentDirectory=System.getProperty("user.dir");
+		System.out.println("Initializing in "+currentDirectory);
 		try {
 			FileInputStream ip=new FileInputStream(currentDirectory+"/config.properties");
 			prop.load(ip);
@@ -42,12 +42,12 @@ public class TestBase {
 			// TODO Auto-generated catch block
 			st.fail("Failed in TestBase method:init-"+e.getLocalizedMessage());
 		}
-		System.out.println("Initializing::::"+currentDirectory);
+		//System.out.println("Initializing::::"+currentDirectory);
 		String browser=prop.getProperty("browser");
                 System.out.println("Browser="+browser);
-		String driverpath=currentDirectory+"/";
-		System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
-		//System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
+		//String driverpath=currentDirectory+"/";
+		//System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
+		System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -55,7 +55,7 @@ public class TestBase {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wait=new WebDriverWait(driver,120);
 		String url=prop.getProperty("url");
-		System.out.println("Initializing::::"+url);
+		System.out.println("Initializing URL "+url);
 		driver.get(url);			
 	}	
 	public void destroy(){
