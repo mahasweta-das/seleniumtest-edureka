@@ -33,7 +33,7 @@ public class TestBase {
 		prop=new Properties();
 		currentDirectory=System.getProperty("user.dir");
 		try {
-			FileInputStream ip=new FileInputStream(currentDirectory+"/src/main/java/config/config.properties");
+			FileInputStream ip=new FileInputStream(currentDirectory+"/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -42,23 +42,24 @@ public class TestBase {
 			// TODO Auto-generated catch block
 			st.fail("Failed in TestBase method:init-"+e.getLocalizedMessage());
 		}
-		System.out.println("Initializing::::");
-		//String browser=prop.getProperty("browser");
-		String driverpath=currentDirectory+"/src/main/java/config/";
-		//System.setProperty("webdriver.firefox.marionette", driverpath+"geckodriver.exe");
-		System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
+		System.out.println("Initializing::::"+currentDirectory);
+		String browser=prop.getProperty("browser");
+                System.out.println("Browser="+browser);
+		String driverpath=currentDirectory+"/";
+		System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
+		//System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wait=new WebDriverWait(driver,120);
 		String url=prop.getProperty("url");
 		System.out.println("Initializing::::"+url);
 		driver.get(url);			
 	}	
 	public void destroy(){
-		driver.quit();
+	//	driver.quit();
 	}
 	
 }
