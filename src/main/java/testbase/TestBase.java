@@ -47,7 +47,7 @@ public class TestBase {
                 System.out.println("Browser="+browser);
 		//String driverpath=currentDirectory+"/";
 		//System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
-		System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
+		System.setProperty("webdriver.firefox.marionette","/usr/local/sbin/geckodriver");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
