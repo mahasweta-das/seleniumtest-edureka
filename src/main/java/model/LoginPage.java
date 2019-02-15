@@ -31,7 +31,7 @@ public boolean login(String uname,String passwrd){
 	submit.submit();
 	
 	//Verify login is successful > As edureka password is not working edureka/edureka
-	String text=textMessage.isDisplayed();		
+	boolean text=textMessage.isDisplayed();		
 	return text;
 }	
 }
