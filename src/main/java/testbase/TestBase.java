@@ -42,12 +42,12 @@ public class TestBase {
 			// TODO Auto-generated catch block
 			st.fail("Failed in TestBase method:init-"+e.getLocalizedMessage());
 		}
-		//System.out.println("Initializing::::"+currentDirectory);
+		System.out.println("Initializing::::"+currentDirectory);
 		String browser=prop.getProperty("browser");
                 System.out.println("Browser="+browser);
-		//String driverpath=currentDirectory+"/";
-		//System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
-		System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
+		String driverpath=currentDirectory+"/";
+		System.setProperty("webdriver.gecko.driver", driverpath+"geckodriver");
+		//System.setProperty("webdriver.gecko.driver","/usr/local/sbin/geckodriver");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
